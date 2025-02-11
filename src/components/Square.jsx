@@ -1,5 +1,4 @@
 import { useState } from "react"
-import "../css/square.css"
 
 const Square = ({value,onSquareClick}) => {
     return (

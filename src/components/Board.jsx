@@ -1,6 +1,4 @@
 import Square from "./Square"
-import "../css/board.css"
-import { useState } from "react"
 
 const Board = ({squares,xIsNext,onPlay}) => {
     const handleClick = (i)=>{

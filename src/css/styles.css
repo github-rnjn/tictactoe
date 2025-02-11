@@ -1,0 +1,53 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Board Layout */
+.board-row {
+    display: flex;
+    justify-content: center;
+}
+
+/* Square Button */
+.square {
+    width: 80px;
+    height: 80px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #333;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.square:hover {
+    background-color: #ddd;
+}
+
+/* Reset Button */
+.reset {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.reset:hover {
+    background-color: #cc0000;
+}
+
+/* Status Message */
+h1 {
+    margin-bottom: 15px;
+    color: #333;
+}
