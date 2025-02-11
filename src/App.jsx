@@ -3,13 +3,20 @@ import Board from "./components/Board"
 
 function App() {
   const [history,setHistory] = useState([Array(9).fill(null)])
-  const currentSquare = history[history.length-1];
-  const [xIsNext,setXIsNext] = useState(true)
+  const [currentMove,setCurrentMove] = useState(0)
+  const currentSquare = history[currentMove]
+  const xIsNext = currentMove%2===0
 
   const handlePlay = (nextSquares)=>{
-    setHistory([...history,nextSquares])
-    setXIsNext(!xIsNext)
+    const nextHistory = [...history.slice(0,currentMove+1),nextSquares]
+    setHistory(nextHistory)
+    setCurrentMove(nextHistory.length-1)
   }
+
+  const jumpTo = (nextMove)=>{
+    setCurrentMove(nextMove)
+  }
+
   const moves = history.map((square,move)=>{
     let description;
     if(move>0){
@@ -19,9 +26,14 @@ function App() {
       description = "Go to start";
     }
     return <li key={move}>
-      <button>{description}</button>
+      <button onClick={()=>jumpTo(move)}>{description}</button>
     </li>
   })
+
+  const handleReset = ()=>{
+    setHistory([Array(9).fill(null)])
+    setCurrentMove(0)
+  }
   return (
     <>
       <div>
@@ -29,6 +41,9 @@ function App() {
       </div>
       <div>
         <ol>{moves}</ol>
+      </div>
+      <div>
+        <button className="reset" onClick={handleReset}>Reset</button>
       </div>
     </>
   )
