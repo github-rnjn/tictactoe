@@ -7,17 +7,28 @@ function App() {
   const [xIsNext,setXIsNext] = useState(true)
 
   const handlePlay = (nextSquares)=>{
-    console.log(history)
     setHistory([...history,nextSquares])
     setXIsNext(!xIsNext)
   }
+  const moves = history.map((square,move)=>{
+    let description;
+    if(move>0){
+      description = "Go to move #"+move;
+    }
+    else{
+      description = "Go to start";
+    }
+    return <li key={move}>
+      <button>{description}</button>
+    </li>
+  })
   return (
     <>
       <div>
         <Board squares={currentSquare} xIsNext={xIsNext} onPlay={handlePlay}/>
       </div>
       <div>
-        {/* <ol>{TODO}</ol> */}
+        <ol>{moves}</ol>
       </div>
     </>
   )
